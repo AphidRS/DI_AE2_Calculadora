@@ -312,23 +312,34 @@ public class MainWindow extends JFrame{
 		public void campoActivo(String s){
 			if (operandos[1].equals("")) {
 				operandos[0] = operandos[0] + s;
-				if (operandos[0].contains(".")) {
-					boton_coma.setEnabled(false);
-				}else {
-					boton_coma.setEnabled(true);
-				}
-					
+				hacerDecimalesCampo0();	
+				if (operandos[0].equalsIgnoreCase("." + s)) {
+					operandos[0] = "0" + operandos[0];
+				}				
 			} else {
 				operandos[2] = operandos[2] + s;
-				if (operandos[2].contains(".")) {
-					boton_coma.setEnabled(false);
-				}else {
-					boton_coma.setEnabled(true);
-				}
-					
+				hacerDecimalesCampo2();					
 			}
 			setCuadro_entrada();
 		}
+		
+		
+		public void hacerDecimalesCampo0() {
+			if (operandos[0].contains(".")) {
+				boton_coma.setEnabled(false);				
+			}else {
+				boton_coma.setEnabled(true);
+			}
+		}
+		
+		public void hacerDecimalesCampo2() {
+			if (!operandos[2].contains(".")) {
+				boton_coma.setEnabled(true);				
+			}else {
+				boton_coma.setEnabled(false);
+			}
+		}	
+
 
 		public void calcular(){
 
