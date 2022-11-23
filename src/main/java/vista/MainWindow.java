@@ -31,6 +31,8 @@ public class MainWindow extends JFrame{
 		private JButton boton_reset;
 		private JButton boton_potencia;
 		private JButton boton_resultado;
+		private JButton boton_raizCuadrada;
+		private JButton boton_raizCubica;
 		private JTextField cuadro_entrada;		
 		private JTextArea cuadro_resultado;
 		ArrayList<String> resultados = new ArrayList<>();
@@ -42,7 +44,7 @@ public class MainWindow extends JFrame{
 		public MainWindow()	{
 			
 			setLocationRelativeTo(null);
-			setBounds(450, 300, 380, 550);
+			setBounds(450, 300, 380, 600);
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
 			setResizable(false);
 			setTitle("Calculadora");
@@ -168,10 +170,22 @@ public class MainWindow extends JFrame{
 			add(boton_potencia);
 
 			boton_resultado = new JButton("=");
-			boton_resultado.setBounds(280,380,60,105);
+			boton_resultado.setBounds(280,380,60,160);
 			boton_resultado.setFont(new Font("Arial",Font.BOLD ,20));
 			boton_resultado.setBackground(Color.lightGray);
 			add(boton_resultado);
+			
+			boton_raizCuadrada = new JButton("√");
+			boton_raizCuadrada.setBounds(20,490,125,50);
+			boton_raizCuadrada.setFont(new Font("Arial",Font.BOLD ,20));
+			boton_raizCuadrada.setBackground(Color.lightGray);
+			add(boton_raizCuadrada);
+			
+			boton_raizCubica = new JButton("√³");
+			boton_raizCubica.setBounds(150,490,125,50);
+			boton_raizCubica.setFont(new Font("Arial",Font.BOLD ,20));
+			boton_raizCubica.setBackground(Color.lightGray);
+			add(boton_raizCubica);
 
 			cuadro_entrada = new JTextField();
 			cuadro_entrada.setBounds(20,210,320,50);
@@ -266,6 +280,14 @@ public class MainWindow extends JFrame{
 
 	public JButton getBoton_resultado() {
 		return boton_resultado;
+	}
+	
+	public JButton getBoton_raizCuadrada() {
+		return boton_raizCuadrada;
+	}
+	
+	public JButton getBoton_raizCubica() {
+		return boton_raizCubica;
 	}
 	
 
