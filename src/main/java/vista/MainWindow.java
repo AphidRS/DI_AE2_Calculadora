@@ -31,7 +31,7 @@ public class MainWindow extends JFrame{
 		private JButton boton_reset;
 		private JButton boton_potencia;
 		private JButton boton_resultado;
-		private JTextField cuadro_entrada;
+		private JTextField cuadro_entrada;		
 		private JTextArea cuadro_resultado;
 		ArrayList<String> resultados = new ArrayList<>();
 		String[] operandos = {"","",""};
@@ -267,6 +267,7 @@ public class MainWindow extends JFrame{
 	public JButton getBoton_resultado() {
 		return boton_resultado;
 	}
+	
 
 		public void setHandler(Events eventhandler) {
 
@@ -334,8 +335,13 @@ public class MainWindow extends JFrame{
 					setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(operandos[2])+" = "+ String.valueOf(resultado));
 					break;
 				case "/":
-					resultado = Integer.parseInt(operandos[0])/Integer.parseInt(operandos[2]);
-					setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(operandos[2])+" = "+ String.valueOf(resultado));
+					try{
+						resultado = Integer.parseInt(operandos[0])/Integer.parseInt(operandos[2]);					
+						setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(operandos[2])+" = "+ String.valueOf(resultado));
+					}
+					catch (Exception e){
+						setCuadro_resultado("El divisor debe ser " + "\ndistinto de cero");
+					}
 					break;
 			}
 			resetEntrada();
