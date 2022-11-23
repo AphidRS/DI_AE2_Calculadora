@@ -312,8 +312,20 @@ public class MainWindow extends JFrame{
 		public void campoActivo(String s){
 			if (operandos[1].equals("")) {
 				operandos[0] = operandos[0] + s;
+				if (operandos[0].contains(".")) {
+					boton_coma.setEnabled(false);
+				}else {
+					boton_coma.setEnabled(true);
+				}
+					
 			} else {
 				operandos[2] = operandos[2] + s;
+				if (operandos[2].contains(".")) {
+					boton_coma.setEnabled(false);
+				}else {
+					boton_coma.setEnabled(true);
+				}
+					
 			}
 			setCuadro_entrada();
 		}
@@ -323,20 +335,20 @@ public class MainWindow extends JFrame{
 			switch (operandos[1]) {
 
 				case "+":
-					int resultado = Integer.parseInt(operandos[0]) + Integer.parseInt(operandos[2]);
+					double resultado = Double.parseDouble(operandos[0]) + Double.parseDouble(operandos[2]);
 					setCuadro_resultado(String.valueOf(operandos[0]) + String.valueOf(operandos[1]) + String.valueOf(operandos[2]) + " = " + String.valueOf(resultado));
 					break;
 				case "-":
-					resultado = Integer.parseInt(operandos[0])-Integer.parseInt(operandos[2]);
+					resultado = Double.parseDouble(operandos[0])-Double.parseDouble(operandos[2]);
 					setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(operandos[2])+" = "+ String.valueOf(resultado));
 					break;
 				case "*":
-					resultado = Integer.parseInt(operandos[0])*Integer.parseInt(operandos[2]);
+					resultado = Double.parseDouble(operandos[0])*Double.parseDouble(operandos[2]);
 					setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(operandos[2])+" = "+ String.valueOf(resultado));
 					break;
 				case "/":
 					try{
-						resultado = Integer.parseInt(operandos[0])/Integer.parseInt(operandos[2]);					
+						resultado = Double.parseDouble(operandos[0])/Double.parseDouble(operandos[2]);					
 						setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(operandos[2])+" = "+ String.valueOf(resultado));
 					}
 					catch (Exception e){

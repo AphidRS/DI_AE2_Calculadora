@@ -95,5 +95,9 @@ public class Events implements ActionListener{
 		if (e.getSource() == ventana.getBoton_reset()) {
 			ventana.resetEntrada();
 		}
+		if (e.getSource() == ventana.getBoton_coma()) {
+			ventana.campoActivo(".");
+			ventana.getBoton_coma();
+		}
 	}
 }
