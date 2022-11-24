@@ -39,7 +39,7 @@ public class MainWindow extends JFrame{
 		public MainWindow()	{
 			
 			setLocationRelativeTo(null);
-			setBounds(450, 300, 360, 550);
+			setBounds(450, 300, 360, 570);
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
 			setResizable(false);
 			setTitle("Calculadora");
@@ -384,7 +384,16 @@ public class MainWindow extends JFrame{
 						operandos[0] = "0" + operandos[0];
 					}
 				}
+/*
+				public void ponerSigno(){
+					if (operandos[0] == "") {
 
+
+					}
+
+
+				}
+*/
 				public void ponerSignoCampo0 () {
 					if (operandos[0].contains("-")) {
 						boton_signo.setEnabled(false);
@@ -405,20 +414,20 @@ public class MainWindow extends JFrame{
 
 						case "+":
 							double resultado = Double.parseDouble(operandos[0]) + Double.parseDouble(operandos[2]);
-							setCuadro_resultado(String.valueOf(operandos[0]) + String.valueOf(operandos[1]) + String.valueOf(operandos[2]) + " = " + String.valueOf(resultado));
+							setCuadro_resultado(operandos[0] + operandos[1] + operandos[2] + " = " + resultado);
 							break;
 						case "-":
 							resultado = Double.parseDouble(operandos[0]) - Double.parseDouble(operandos[2]);
-							setCuadro_resultado(String.valueOf(operandos[0]) + String.valueOf(operandos[1]) + String.valueOf(operandos[2]) + " = " + String.valueOf(resultado));
+							setCuadro_resultado(operandos[0] + operandos[1] + operandos[2] + " = " + resultado);
 							break;
 						case "*":
 							resultado = Double.parseDouble(operandos[0]) * Double.parseDouble(operandos[2]);
-							setCuadro_resultado(String.valueOf(operandos[0]) + String.valueOf(operandos[1]) + String.valueOf(operandos[2]) + " = " + String.valueOf(resultado));
+							setCuadro_resultado(operandos[0] + operandos[1] + operandos[2] + " = " + resultado);
 							break;
 						case "/":
 							if (!(Double.parseDouble(operandos[2]) == 0)) {
 								resultado = Double.parseDouble(operandos[0]) / Double.parseDouble(operandos[2]);
-								setCuadro_resultado(String.valueOf(operandos[0]) + String.valueOf(operandos[1]) + String.valueOf(operandos[2]) + " = " + String.valueOf(resultado));
+								setCuadro_resultado(operandos[0] + operandos[1] + operandos[2] + " = " + resultado);
 							} else {
 								JFrame divisorCero = new JFrame();
 								JOptionPane.showMessageDialog(divisorCero, "El divisor debe ser " + "\ndistinto de cero");
@@ -433,7 +442,7 @@ public class MainWindow extends JFrame{
 							String pass = JOptionPane.showInputDialog(askPass, "Introduzca la contraseña");
 							if (pass.equals("1234")) {
 								resultado = Math.cbrt(Double.parseDouble(operandos[0]));
-								setCuadro_resultado(String.valueOf(operandos[0]) + String.valueOf(operandos[1]) + String.valueOf(resultado));
+								setCuadro_resultado(operandos[0] + operandos[1] + resultado);
 							} else {
 								JFrame error = new JFrame();
 								JOptionPane.showMessageDialog(error, "Contraseña incorrecta");
