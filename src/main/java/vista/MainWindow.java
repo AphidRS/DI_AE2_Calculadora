@@ -40,7 +40,6 @@ public class MainWindow extends JFrame{
 			
 			setLocationRelativeTo(null);
 			setBounds(450, 300, 360, 550);
-			setBounds(450, 300, 380, 600);
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
 			setResizable(false);
 			setTitle("Calculadora");
