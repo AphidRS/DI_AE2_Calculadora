@@ -397,7 +397,6 @@ public class MainWindow extends JFrame{
 				case "√³":
 					JFrame askPass = new JFrame();
 			        String pass = JOptionPane.showInputDialog(askPass, "Introduzca la contraseña");
-			        System.out.println(pass);
 			        if (pass.equals("1234")) {
 			        	resultado = Math.cbrt(Double.parseDouble(operandos[0]));
 			        	setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(resultado));
