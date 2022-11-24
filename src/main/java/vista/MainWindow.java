@@ -337,9 +337,7 @@ public class MainWindow extends JFrame{
 			if (operandos[1].equals("")) {
 				operandos[0] = operandos[0] + s;
 				hacerDecimalesCampo0();	
-				if (operandos[0].equalsIgnoreCase("." + s)) {
-					operandos[0] = "0" + operandos[0];
-				}				
+				ceroComa(s);
 			} else {
 				operandos[2] = operandos[2] + s;
 				hacerDecimalesCampo2();					
@@ -363,6 +361,12 @@ public class MainWindow extends JFrame{
 				boton_coma.setEnabled(false);
 			}
 		}	
+		
+		public void ceroComa(String s) {
+			if (operandos[0].equals("." + s)) {
+				operandos[0] = "0" + operandos[0];
+			}
+		}
 
 
 		public void calcular(){
