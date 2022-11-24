@@ -42,7 +42,7 @@ public class MainWindow extends JFrame{
 		public MainWindow()	{
 			
 			setLocationRelativeTo(null);
-			setBounds(450, 300, 380, 550);
+			setBounds(450, 300, 360, 550);
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
 			setResizable(false);
 			setTitle("Calculadora");
@@ -268,109 +268,129 @@ public class MainWindow extends JFrame{
 		return boton_resultado;
 	}
 
-		public void setHandler(Events eventhandler) {
+	public void setHandler(Events eventhandler) {
 
-			boton_0.addActionListener(eventhandler);
-			boton_1.addActionListener(eventhandler);
-			boton_2.addActionListener(eventhandler);
-			boton_3.addActionListener(eventhandler);
-			boton_4.addActionListener(eventhandler);
-			boton_5.addActionListener(eventhandler);
-			boton_6.addActionListener(eventhandler);
-			boton_7.addActionListener(eventhandler);
-			boton_8.addActionListener(eventhandler);
-			boton_9.addActionListener(eventhandler);
-			boton_coma.addActionListener(eventhandler);
-			boton_porcentaje.addActionListener(eventhandler);
-			boton_dividir.addActionListener(eventhandler);
-			boton_multiplicar.addActionListener(eventhandler);
-			boton_menos.addActionListener(eventhandler);
-			boton_mas.addActionListener(eventhandler);
-			boton_reset.addActionListener(eventhandler);
-			boton_potencia.addActionListener(eventhandler);
-			boton_resultado.addActionListener(eventhandler);
+		boton_0.addActionListener(eventhandler);
+		boton_1.addActionListener(eventhandler);
+		boton_2.addActionListener(eventhandler);
+		boton_3.addActionListener(eventhandler);
+		boton_4.addActionListener(eventhandler);
+		boton_5.addActionListener(eventhandler);
+		boton_6.addActionListener(eventhandler);
+		boton_7.addActionListener(eventhandler);
+		boton_8.addActionListener(eventhandler);
+		boton_9.addActionListener(eventhandler);
+		boton_coma.addActionListener(eventhandler);
+		boton_porcentaje.addActionListener(eventhandler);
+		boton_dividir.addActionListener(eventhandler);
+		boton_multiplicar.addActionListener(eventhandler);
+		boton_menos.addActionListener(eventhandler);
+		boton_mas.addActionListener(eventhandler);
+		boton_reset.addActionListener(eventhandler);
+		boton_potencia.addActionListener(eventhandler);
+		boton_resultado.addActionListener(eventhandler);
+
+		boton_0.addKeyListener(eventhandler);
+		boton_1.addKeyListener(eventhandler);
+		boton_2.addKeyListener(eventhandler);
+		boton_3.addKeyListener(eventhandler);
+		boton_4.addKeyListener(eventhandler);
+		boton_5.addKeyListener(eventhandler);
+		boton_6.addKeyListener(eventhandler);
+		boton_7.addKeyListener(eventhandler);
+		boton_8.addKeyListener(eventhandler);
+		boton_9.addKeyListener(eventhandler);
+		boton_coma.addKeyListener(eventhandler);
+		boton_porcentaje.addKeyListener(eventhandler);
+		boton_dividir.addKeyListener(eventhandler);
+		boton_multiplicar.addKeyListener(eventhandler);
+		boton_menos.addKeyListener(eventhandler);
+		boton_mas.addKeyListener(eventhandler);
+		boton_reset.addKeyListener(eventhandler);
+		boton_potencia.addKeyListener(eventhandler);
+		boton_resultado.addKeyListener(eventhandler);
+	}
+
+	public String[] getCuadro_entrada() {
+		return operandos;
+	}
+
+	public void setCuadro_entrada() {
+		cuadro_entrada.setText(operandos[0] + operandos[1] + operandos[2]);
+	}
+
+	public String getCuadro_resultado() {
+		return cuadro_resultado.getText();
+	}
+
+	public void setCuadro_resultado(String s) {
+		resultados.add(s+"\n");
+		this.cuadro_resultado.setText(listarResultados(resultados));
+	}
+
+	public void campoActivo(String s){
+		if (operandos[1].equals("")) {
+			operandos[0] = operandos[0] + s;
+		} else {
+			operandos[2] = operandos[2] + s;
 		}
-		
-		public String[] getCuadro_entrada() {
-			return operandos;
+		setCuadro_entrada();
+	}
+
+	public void calcular(){
+
+		switch (operandos[1]) {
+
+			case "+":
+				int resultado = Integer.parseInt(operandos[0]) + Integer.parseInt(operandos[2]);
+				setCuadro_resultado(String.valueOf(operandos[0]) + String.valueOf(operandos[1]) + String.valueOf(operandos[2]) + " = " + String.valueOf(resultado));
+				break;
+			case "-":
+				resultado = Integer.parseInt(operandos[0])-Integer.parseInt(operandos[2]);
+				setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(operandos[2])+" = "+ String.valueOf(resultado));
+				break;
+			case "*":
+				resultado = Integer.parseInt(operandos[0])*Integer.parseInt(operandos[2]);
+				setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(operandos[2])+" = "+ String.valueOf(resultado));
+				break;
+			case "/":
+				resultado = Integer.parseInt(operandos[0])/Integer.parseInt(operandos[2]);
+				setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(operandos[2])+" = "+ String.valueOf(resultado));
+				break;
 		}
+		resetEntrada();
+	}
 
-		public void setCuadro_entrada() {
-			cuadro_entrada.setText(operandos[0] + operandos[1] + operandos[2]);
+	public void resetEntrada() {
+		operandos[0] = "";
+		operandos[1] = "";
+		operandos[2] = "";
+		setCuadro_entrada();
+
+	}
+
+	public void suma(){
+		operandos[1] = "+";
+	}
+
+	public void resta(){
+		operandos[1] = "-";
+	}
+
+	public void dividir(){
+		operandos[1] = "/";
+	}
+
+	public void multiplicar(){
+		operandos[1] = "*";
+	}
+
+	public String listarResultados(ArrayList resultados) {
+		String resultados_string = "";
+		for (int i=0; i< resultados.size();i++) {
+			resultados_string = resultados_string + resultados.get(i);
 		}
-
-		public String getCuadro_resultado() {
-			return cuadro_resultado.getText();
-		}
-
-		public void setCuadro_resultado(String s) {
-			resultados.add(s+"\n");
-			this.cuadro_resultado.setText(listarResultados(resultados));
-		}
-
-		public void campoActivo(String s){
-			if (operandos[1].equals("")) {
-				operandos[0] = operandos[0] + s;
-			} else {
-				operandos[2] = operandos[2] + s;
-			}
-			setCuadro_entrada();
-		}
-
-		public void calcular(){
-
-			switch (operandos[1]) {
-
-				case "+":
-					int resultado = Integer.parseInt(operandos[0]) + Integer.parseInt(operandos[2]);
-					setCuadro_resultado(String.valueOf(operandos[0]) + String.valueOf(operandos[1]) + String.valueOf(operandos[2]) + " = " + String.valueOf(resultado));
-					break;
-				case "-":
-					resultado = Integer.parseInt(operandos[0])-Integer.parseInt(operandos[2]);
-					setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(operandos[2])+" = "+ String.valueOf(resultado));
-					break;
-				case "*":
-					resultado = Integer.parseInt(operandos[0])*Integer.parseInt(operandos[2]);
-					setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(operandos[2])+" = "+ String.valueOf(resultado));
-					break;
-				case "/":
-					resultado = Integer.parseInt(operandos[0])/Integer.parseInt(operandos[2]);
-					setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(operandos[2])+" = "+ String.valueOf(resultado));
-					break;
-			}
-			resetEntrada();
-		}
-
-		public void resetEntrada() {
-			operandos[0] = "";
-			operandos[1] = "";
-			operandos[2] = "";
-			setCuadro_entrada();
-
-		}
-
-		public void suma(){
-			operandos[1] = "+";
-		}
-
-		public void resta(){
-			operandos[1] = "-";
-		}
-
-		public void dividir(){
-			operandos[1] = "/";
-		}
-
-		public void multiplicar(){
-			operandos[1] = "*";
-		}
-
-		public String listarResultados(ArrayList resultados) {
-			String resultados_string = "";
-			for (int i=0; i< resultados.size();i++) {
-				resultados_string = resultados_string + resultados.get(i);
-			}
-			return resultados_string;
-		}
+		return resultados_string;
+	}
 }
 
