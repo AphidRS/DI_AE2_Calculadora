@@ -385,13 +385,13 @@ public class MainWindow extends JFrame{
 					resultado = Double.parseDouble(operandos[0])*Double.parseDouble(operandos[2]);
 					setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(operandos[2])+" = "+ String.valueOf(resultado));
 					break;
-				case "/":
-					try{
+				case "/":					
+					if (!(Double.parseDouble(operandos[2]) == 0)) {
 						resultado = Double.parseDouble(operandos[0])/Double.parseDouble(operandos[2]);					
 						setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(operandos[2])+" = "+ String.valueOf(resultado));
-					}
-					catch (Exception e){
-						setCuadro_resultado("El divisor debe ser " + "\ndistinto de cero");
+					}else{					
+						JFrame divisorCero = new JFrame();
+						JOptionPane.showMessageDialog(divisorCero, "El divisor debe ser " + "\ndistinto de cero");
 					}
 					break;
 				case "√":
