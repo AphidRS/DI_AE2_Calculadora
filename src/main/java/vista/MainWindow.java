@@ -29,9 +29,11 @@ public class MainWindow extends JFrame{
 		private JButton boton_multiplicar;
 		private JButton boton_dividir;
 		private JButton boton_reset;
-		private JButton boton_potencia;
+		private JButton boton_signo;
 		private JButton boton_resultado;
-		private JTextField cuadro_entrada;
+		private JButton boton_raizCuadrada;
+		private JButton boton_raizCubica;
+		private JTextField cuadro_entrada;		
 		private JTextArea cuadro_resultado;
 		ArrayList<String> resultados = new ArrayList<>();
 		String[] operandos = {"","",""};
@@ -43,6 +45,7 @@ public class MainWindow extends JFrame{
 			
 			setLocationRelativeTo(null);
 			setBounds(450, 300, 360, 550);
+			setBounds(450, 300, 380, 600);
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
 			setResizable(false);
 			setTitle("Calculadora");
@@ -161,17 +164,29 @@ public class MainWindow extends JFrame{
 			boton_reset.setBackground(Color.lightGray);
 			add(boton_reset);
 
-			boton_potencia = new JButton("ª");
-			boton_potencia.setBounds(280,325,60,50);
-			boton_potencia.setFont(new Font("Arial",Font.BOLD ,20));
-			boton_potencia.setBackground(Color.lightGray);
-			add(boton_potencia);
+			boton_signo = new JButton("+/-");
+			boton_signo.setBounds(280,325,60,50);
+			boton_signo.setFont(new Font("Arial",Font.BOLD ,20));
+			boton_signo.setBackground(Color.lightGray);
+			add(boton_signo);
 
 			boton_resultado = new JButton("=");
-			boton_resultado.setBounds(280,380,60,105);
+			boton_resultado.setBounds(280,380,60,160);
 			boton_resultado.setFont(new Font("Arial",Font.BOLD ,20));
 			boton_resultado.setBackground(Color.lightGray);
 			add(boton_resultado);
+			
+			boton_raizCuadrada = new JButton("√");
+			boton_raizCuadrada.setBounds(20,490,125,50);
+			boton_raizCuadrada.setFont(new Font("Arial",Font.BOLD ,20));
+			boton_raizCuadrada.setBackground(Color.lightGray);
+			add(boton_raizCuadrada);
+			
+			boton_raizCubica = new JButton("√³");
+			boton_raizCubica.setBounds(150,490,125,50);
+			boton_raizCubica.setFont(new Font("Arial",Font.BOLD ,20));
+			boton_raizCubica.setBackground(Color.lightGray);
+			add(boton_raizCubica);
 
 			cuadro_entrada = new JTextField();
 			cuadro_entrada.setBounds(20,210,320,50);
@@ -260,13 +275,22 @@ public class MainWindow extends JFrame{
 		return boton_reset;
 	}
 
-	public JButton getBoton_potencia() {
-		return boton_potencia;
+	public JButton getBoton_signo() {
+		return boton_signo;
 	}
 
 	public JButton getBoton_resultado() {
 		return boton_resultado;
 	}
+	
+	public JButton getBoton_raizCuadrada() {
+		return boton_raizCuadrada;
+	}
+	
+	public JButton getBoton_raizCubica() {
+		return boton_raizCubica;
+	}
+	
 
 	public void setHandler(Events eventhandler) {
 
@@ -287,28 +311,7 @@ public class MainWindow extends JFrame{
 		boton_menos.addActionListener(eventhandler);
 		boton_mas.addActionListener(eventhandler);
 		boton_reset.addActionListener(eventhandler);
-		boton_potencia.addActionListener(eventhandler);
 		boton_resultado.addActionListener(eventhandler);
-
-		boton_0.addKeyListener(eventhandler);
-		boton_1.addKeyListener(eventhandler);
-		boton_2.addKeyListener(eventhandler);
-		boton_3.addKeyListener(eventhandler);
-		boton_4.addKeyListener(eventhandler);
-		boton_5.addKeyListener(eventhandler);
-		boton_6.addKeyListener(eventhandler);
-		boton_7.addKeyListener(eventhandler);
-		boton_8.addKeyListener(eventhandler);
-		boton_9.addKeyListener(eventhandler);
-		boton_coma.addKeyListener(eventhandler);
-		boton_porcentaje.addKeyListener(eventhandler);
-		boton_dividir.addKeyListener(eventhandler);
-		boton_multiplicar.addKeyListener(eventhandler);
-		boton_menos.addKeyListener(eventhandler);
-		boton_mas.addKeyListener(eventhandler);
-		boton_reset.addKeyListener(eventhandler);
-		boton_potencia.addKeyListener(eventhandler);
-		boton_resultado.addKeyListener(eventhandler);
 	}
 
 	public String[] getCuadro_entrada() {
@@ -333,6 +336,28 @@ public class MainWindow extends JFrame{
 			operandos[0] = operandos[0] + s;
 		} else {
 			operandos[2] = operandos[2] + s;
+			boton_0.addActionListener(eventhandler);
+			boton_1.addActionListener(eventhandler);
+			boton_2.addActionListener(eventhandler);
+			boton_3.addActionListener(eventhandler);
+			boton_4.addActionListener(eventhandler);
+			boton_5.addActionListener(eventhandler);
+			boton_6.addActionListener(eventhandler);
+			boton_7.addActionListener(eventhandler);
+			boton_8.addActionListener(eventhandler);
+			boton_9.addActionListener(eventhandler);
+			boton_coma.addActionListener(eventhandler);
+			boton_porcentaje.addActionListener(eventhandler);
+			boton_dividir.addActionListener(eventhandler);
+			boton_multiplicar.addActionListener(eventhandler);
+			boton_menos.addActionListener(eventhandler);
+			boton_mas.addActionListener(eventhandler);
+			boton_reset.addActionListener(eventhandler);
+			boton_signo.addActionListener(eventhandler);
+			boton_resultado.addActionListener(eventhandler);
+			boton_raizCuadrada.addActionListener(eventhandler);
+			boton_raizCubica.addActionListener(eventhandler);
+
 		}
 		setCuadro_entrada();
 	}
@@ -361,6 +386,7 @@ public class MainWindow extends JFrame{
 		resetEntrada();
 	}
 
+<<<<<<< HEAD
 	public void resetEntrada() {
 		operandos[0] = "";
 		operandos[1] = "";
@@ -389,8 +415,155 @@ public class MainWindow extends JFrame{
 		String resultados_string = "";
 		for (int i=0; i< resultados.size();i++) {
 			resultados_string = resultados_string + resultados.get(i);
+
+		public void setCuadro_entrada() {
+			cuadro_entrada.setText(operandos[0] + operandos[1] + operandos[2]);
 		}
-		return resultados_string;
+
+		public String getCuadro_resultado() {
+			return cuadro_resultado.getText();
+		}
+
+		public void setCuadro_resultado(String s) {
+			resultados.add(s+"\n");
+			this.cuadro_resultado.setText(listarResultados(resultados));
+		}
+
+		public void campoActivo(String s){
+			if (operandos[1].equals("")) {
+				operandos[0] = operandos[0] + s;
+				hacerDecimalesCampo0();	
+				ceroComa(s);
+				ponerSignoCampo0();
+			} else {
+				operandos[2] = operandos[2] + s;
+				hacerDecimalesCampo2();
+				ponerSignoCampo2();
+			}
+			setCuadro_entrada();
+		}
+		
+		
+		public void hacerDecimalesCampo0() {
+			if (operandos[0].contains(".")) {
+				boton_coma.setEnabled(false);				
+			}else {
+				boton_coma.setEnabled(true);
+			}
+		}
+		
+		public void hacerDecimalesCampo2() {
+			if (!operandos[2].contains(".")) {
+				boton_coma.setEnabled(true);				
+			}else {
+				boton_coma.setEnabled(false);
+			}
+		}	
+		
+		public void ceroComa(String s) {
+			if (operandos[0].equals("." + s)) {
+				operandos[0] = "0" + operandos[0];
+			}
+		}
+		
+		public void ponerSignoCampo0() {
+			if (operandos[0].contains("-")) {
+				boton_signo.setEnabled(false);	
+			}
+		}
+		
+		public void ponerSignoCampo2() {
+			boton_signo.setEnabled(true);
+			if (operandos[2].contains("-")) {
+				boton_signo.setEnabled(false);
+			}
+		}
+
+
+
+		public void calcular(){
+
+			switch (operandos[1]) {
+
+				case "+":
+					double resultado = Double.parseDouble(operandos[0]) + Double.parseDouble(operandos[2]);
+					setCuadro_resultado(String.valueOf(operandos[0]) + String.valueOf(operandos[1]) + String.valueOf(operandos[2]) + " = " + String.valueOf(resultado));
+					break;
+				case "-":
+					resultado = Double.parseDouble(operandos[0])-Double.parseDouble(operandos[2]);
+					setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(operandos[2])+" = "+ String.valueOf(resultado));
+					break;
+				case "*":
+					resultado = Double.parseDouble(operandos[0])*Double.parseDouble(operandos[2]);
+					setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(operandos[2])+" = "+ String.valueOf(resultado));
+					break;
+				case "/":					
+					if (!(Double.parseDouble(operandos[2]) == 0)) {
+						resultado = Double.parseDouble(operandos[0])/Double.parseDouble(operandos[2]);					
+						setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(operandos[2])+" = "+ String.valueOf(resultado));
+					}else{					
+						JFrame divisorCero = new JFrame();
+						JOptionPane.showMessageDialog(divisorCero, "El divisor debe ser " + "\ndistinto de cero");
+					}
+					break;
+				case "√":
+					JFrame noDisponible = new JFrame();
+					JOptionPane.showMessageDialog(noDisponible, "Funcionalidad no disponible");
+					break;
+				case "√³":
+					JFrame askPass = new JFrame();
+			        String pass = JOptionPane.showInputDialog(askPass, "Introduzca la contraseña");
+			        if (pass.equals("1234")) {
+			        	resultado = Math.cbrt(Double.parseDouble(operandos[0]));
+			        	setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(resultado));
+			        } else {
+			        JFrame error = new JFrame();
+			        JOptionPane.showMessageDialog(error, "Contraseña incorrecta");
+			        }
+					break;
+			}
+			resetEntrada();
+		}
+
+		public void resetEntrada() {
+			operandos[0] = "";
+			operandos[1] = "";
+			operandos[2] = "";
+			setCuadro_entrada();
+
+		}
+
+		public void suma(){
+			operandos[1] = "+";
+		}
+
+		public void resta(){
+			operandos[1] = "-";
+		}
+
+		public void dividir(){
+			operandos[1] = "/";
+		}
+
+		public void multiplicar(){
+			operandos[1] = "*";
+		}
+		
+		public void raizCuadrada() {
+			operandos[1] = "√";
+		}
+		
+		public void raizCubica() {
+			operandos[1] = "√³";
+		}
+
+		public String listarResultados(ArrayList resultados){
+				String resultados_string = "";
+				for (int i = 0; i < resultados.size(); i++) {
+					resultados_string = resultados_string + resultados.get(i);
+				}
+				return resultados_string;
+			}
 	}
 }
 
