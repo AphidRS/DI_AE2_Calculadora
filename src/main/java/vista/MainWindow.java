@@ -29,7 +29,7 @@ public class MainWindow extends JFrame{
 		private JButton boton_multiplicar;
 		private JButton boton_dividir;
 		private JButton boton_reset;
-		private JButton boton_potencia;
+		private JButton boton_signo;
 		private JButton boton_resultado;
 		private JButton boton_raizCuadrada;
 		private JButton boton_raizCubica;
@@ -163,11 +163,11 @@ public class MainWindow extends JFrame{
 			boton_reset.setBackground(Color.lightGray);
 			add(boton_reset);
 
-			boton_potencia = new JButton("ª");
-			boton_potencia.setBounds(280,325,60,50);
-			boton_potencia.setFont(new Font("Arial",Font.BOLD ,20));
-			boton_potencia.setBackground(Color.lightGray);
-			add(boton_potencia);
+			boton_signo = new JButton("+/-");
+			boton_signo.setBounds(280,325,60,50);
+			boton_signo.setFont(new Font("Arial",Font.BOLD ,20));
+			boton_signo.setBackground(Color.lightGray);
+			add(boton_signo);
 
 			boton_resultado = new JButton("=");
 			boton_resultado.setBounds(280,380,60,160);
@@ -274,8 +274,8 @@ public class MainWindow extends JFrame{
 		return boton_reset;
 	}
 
-	public JButton getBoton_potencia() {
-		return boton_potencia;
+	public JButton getBoton_signo() {
+		return boton_signo;
 	}
 
 	public JButton getBoton_resultado() {
@@ -310,7 +310,7 @@ public class MainWindow extends JFrame{
 			boton_menos.addActionListener(eventhandler);
 			boton_mas.addActionListener(eventhandler);
 			boton_reset.addActionListener(eventhandler);
-			boton_potencia.addActionListener(eventhandler);
+			boton_signo.addActionListener(eventhandler);
 			boton_resultado.addActionListener(eventhandler);
 			boton_raizCuadrada.addActionListener(eventhandler);
 			boton_raizCubica.addActionListener(eventhandler);
@@ -338,9 +338,11 @@ public class MainWindow extends JFrame{
 				operandos[0] = operandos[0] + s;
 				hacerDecimalesCampo0();	
 				ceroComa(s);
+				ponerSignoCampo0();
 			} else {
 				operandos[2] = operandos[2] + s;
-				hacerDecimalesCampo2();					
+				hacerDecimalesCampo2();
+				ponerSignoCampo2();
 			}
 			setCuadro_entrada();
 		}
@@ -367,6 +369,20 @@ public class MainWindow extends JFrame{
 				operandos[0] = "0" + operandos[0];
 			}
 		}
+		
+		public void ponerSignoCampo0() {
+			if (operandos[0].contains("-")) {
+				boton_signo.setEnabled(false);	
+			}
+		}
+		
+		public void ponerSignoCampo2() {
+			boton_signo.setEnabled(true);
+			if (operandos[2].contains("-")) {
+				boton_signo.setEnabled(false);
+			}
+		}
+
 
 
 		public void calcular(){

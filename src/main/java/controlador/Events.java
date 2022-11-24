@@ -105,5 +105,10 @@ public class Events implements ActionListener{
 		if (e.getSource() == ventana.getBoton_raizCuadrada()) {
 			ventana.raizCuadrada();
 		}
+		if (e.getSource() == ventana.getBoton_signo()) {
+			ventana.campoActivo("-");
+			ventana.getBoton_signo();
+		}
+	
 	}
 }
