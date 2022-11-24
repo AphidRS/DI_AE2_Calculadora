@@ -1,7 +1,5 @@
 package controlador;
 
-import java.awt.Color;
-import javax.swing.JFrame;
 import vista.MainWindow;
 
 public class Main {
