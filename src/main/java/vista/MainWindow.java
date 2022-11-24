@@ -371,14 +371,17 @@ public class MainWindow extends JFrame{
 		}
 		
 		public void ponerSignoCampo0() {
-			if (operandos[0].contains("-")) {
-				boton_signo.setEnabled(false);	
+			if (operandos[0].contains("")) {
+				boton_signo.setEnabled(true);	
+			} else {
+				boton_signo.setEnabled(false);
 			}
 		}
 		
 		public void ponerSignoCampo2() {
-			boton_signo.setEnabled(true);
-			if (operandos[2].contains("-")) {
+			if (operandos[2].contains("")) {
+				boton_signo.setEnabled(true);	
+			} else {
 				boton_signo.setEnabled(false);
 			}
 		}
