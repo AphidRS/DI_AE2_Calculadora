@@ -99,5 +99,11 @@ public class Events implements ActionListener{
 			ventana.campoActivo(".");
 			ventana.getBoton_coma();
 		}
+		if (e.getSource() == ventana.getBoton_raizCubica()) {
+			ventana.raizCubica();
+		}
+		if (e.getSource() == ventana.getBoton_raizCuadrada()) {
+			ventana.raizCuadrada();
+		}
 	}
 }

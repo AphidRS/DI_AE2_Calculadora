@@ -312,6 +312,8 @@ public class MainWindow extends JFrame{
 			boton_reset.addActionListener(eventhandler);
 			boton_potencia.addActionListener(eventhandler);
 			boton_resultado.addActionListener(eventhandler);
+			boton_raizCuadrada.addActionListener(eventhandler);
+			boton_raizCubica.addActionListener(eventhandler);
 		}
 		
 		public String[] getCuadro_entrada() {
@@ -388,6 +390,22 @@ public class MainWindow extends JFrame{
 						setCuadro_resultado("El divisor debe ser " + "\ndistinto de cero");
 					}
 					break;
+				case "√":
+					JFrame noDisponible = new JFrame();
+					JOptionPane.showMessageDialog(noDisponible, "Funcionalidad no disponible");
+					break;
+				case "√³":
+					JFrame askPass = new JFrame();
+			        String pass = JOptionPane.showInputDialog(askPass, "Introduzca la contraseña");
+			        System.out.println(pass);
+			        if (pass.equals("1234")) {
+			        	resultado = Math.cbrt(Double.parseDouble(operandos[0]));
+			        	setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(resultado));
+			        } else {
+			        JFrame error = new JFrame();
+			        JOptionPane.showMessageDialog(error, "Contraseña incorrecta");
+			        }
+					break;
 			}
 			resetEntrada();
 		}
@@ -414,6 +432,14 @@ public class MainWindow extends JFrame{
 
 		public void multiplicar(){
 			operandos[1] = "*";
+		}
+		
+		public void raizCuadrada() {
+			operandos[1] = "√";
+		}
+		
+		public void raizCubica() {
+			operandos[1] = "√³";
 		}
 
 		public String listarResultados(ArrayList resultados) {
