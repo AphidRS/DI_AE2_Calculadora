@@ -39,8 +39,6 @@ public class MainWindow extends JFrame{
 		String[] operandos = {"","",""};
 
 
-
-		
 		public MainWindow()	{
 			
 			setLocationRelativeTo(null);
@@ -311,218 +309,28 @@ public class MainWindow extends JFrame{
 		boton_menos.addActionListener(eventhandler);
 		boton_mas.addActionListener(eventhandler);
 		boton_reset.addActionListener(eventhandler);
+		boton_signo.addActionListener(eventhandler);
 		boton_resultado.addActionListener(eventhandler);
+		boton_raizCuadrada.addActionListener(eventhandler);
+		boton_raizCubica.addActionListener(eventhandler);
+
 	}
 
-	public String[] getCuadro_entrada() {
-		return operandos;
-	}
-
-	public void setCuadro_entrada() {
-		cuadro_entrada.setText(operandos[0] + operandos[1] + operandos[2]);
-	}
-
-	public String getCuadro_resultado() {
-		return cuadro_resultado.getText();
-	}
-
-	public void setCuadro_resultado(String s) {
-		resultados.add(s+"\n");
-		this.cuadro_resultado.setText(listarResultados(resultados));
-	}
-
-	public void campoActivo(String s){
-		if (operandos[1].equals("")) {
-			operandos[0] = operandos[0] + s;
-		} else {
-			operandos[2] = operandos[2] + s;
-			boton_0.addActionListener(eventhandler);
-			boton_1.addActionListener(eventhandler);
-			boton_2.addActionListener(eventhandler);
-			boton_3.addActionListener(eventhandler);
-			boton_4.addActionListener(eventhandler);
-			boton_5.addActionListener(eventhandler);
-			boton_6.addActionListener(eventhandler);
-			boton_7.addActionListener(eventhandler);
-			boton_8.addActionListener(eventhandler);
-			boton_9.addActionListener(eventhandler);
-			boton_coma.addActionListener(eventhandler);
-			boton_porcentaje.addActionListener(eventhandler);
-			boton_dividir.addActionListener(eventhandler);
-			boton_multiplicar.addActionListener(eventhandler);
-			boton_menos.addActionListener(eventhandler);
-			boton_mas.addActionListener(eventhandler);
-			boton_reset.addActionListener(eventhandler);
-			boton_signo.addActionListener(eventhandler);
-			boton_resultado.addActionListener(eventhandler);
-			boton_raizCuadrada.addActionListener(eventhandler);
-			boton_raizCubica.addActionListener(eventhandler);
-
+		public String[] getCuadro_entrada() {
+			return operandos;
 		}
-		setCuadro_entrada();
-	}
 
-	public void calcular(){
-
-		switch (operandos[1]) {
-
-			case "+":
-				int resultado = Integer.parseInt(operandos[0]) + Integer.parseInt(operandos[2]);
-				setCuadro_resultado(String.valueOf(operandos[0]) + String.valueOf(operandos[1]) + String.valueOf(operandos[2]) + " = " + String.valueOf(resultado));
-				break;
-			case "-":
-				resultado = Integer.parseInt(operandos[0])-Integer.parseInt(operandos[2]);
-				setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(operandos[2])+" = "+ String.valueOf(resultado));
-				break;
-			case "*":
-				resultado = Integer.parseInt(operandos[0])*Integer.parseInt(operandos[2]);
-				setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(operandos[2])+" = "+ String.valueOf(resultado));
-				break;
-			case "/":
-				resultado = Integer.parseInt(operandos[0])/Integer.parseInt(operandos[2]);
-				setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(operandos[2])+" = "+ String.valueOf(resultado));
-				break;
-		}
-		resetEntrada();
-	}
-
-<<<<<<< HEAD
-	public void resetEntrada() {
-		operandos[0] = "";
-		operandos[1] = "";
-		operandos[2] = "";
-		setCuadro_entrada();
-
-	}
-
-	public void suma(){
-		operandos[1] = "+";
-	}
-
-	public void resta(){
-		operandos[1] = "-";
-	}
-
-	public void dividir(){
-		operandos[1] = "/";
-	}
-
-	public void multiplicar(){
-		operandos[1] = "*";
-	}
-
-	public String listarResultados(ArrayList resultados) {
-		String resultados_string = "";
-		for (int i=0; i< resultados.size();i++) {
-			resultados_string = resultados_string + resultados.get(i);
-
-		public void setCuadro_entrada() {
+		public void setCuadro_entrada () {
 			cuadro_entrada.setText(operandos[0] + operandos[1] + operandos[2]);
 		}
 
-		public String getCuadro_resultado() {
+		public String getCuadro_resultado () {
 			return cuadro_resultado.getText();
 		}
 
-		public void setCuadro_resultado(String s) {
-			resultados.add(s+"\n");
+		public void setCuadro_resultado (String s){
+			resultados.add(s + "\n");
 			this.cuadro_resultado.setText(listarResultados(resultados));
-		}
-
-		public void campoActivo(String s){
-			if (operandos[1].equals("")) {
-				operandos[0] = operandos[0] + s;
-				hacerDecimalesCampo0();	
-				ceroComa(s);
-				ponerSignoCampo0();
-			} else {
-				operandos[2] = operandos[2] + s;
-				hacerDecimalesCampo2();
-				ponerSignoCampo2();
-			}
-			setCuadro_entrada();
-		}
-		
-		
-		public void hacerDecimalesCampo0() {
-			if (operandos[0].contains(".")) {
-				boton_coma.setEnabled(false);				
-			}else {
-				boton_coma.setEnabled(true);
-			}
-		}
-		
-		public void hacerDecimalesCampo2() {
-			if (!operandos[2].contains(".")) {
-				boton_coma.setEnabled(true);				
-			}else {
-				boton_coma.setEnabled(false);
-			}
-		}	
-		
-		public void ceroComa(String s) {
-			if (operandos[0].equals("." + s)) {
-				operandos[0] = "0" + operandos[0];
-			}
-		}
-		
-		public void ponerSignoCampo0() {
-			if (operandos[0].contains("-")) {
-				boton_signo.setEnabled(false);	
-			}
-		}
-		
-		public void ponerSignoCampo2() {
-			boton_signo.setEnabled(true);
-			if (operandos[2].contains("-")) {
-				boton_signo.setEnabled(false);
-			}
-		}
-
-
-
-		public void calcular(){
-
-			switch (operandos[1]) {
-
-				case "+":
-					double resultado = Double.parseDouble(operandos[0]) + Double.parseDouble(operandos[2]);
-					setCuadro_resultado(String.valueOf(operandos[0]) + String.valueOf(operandos[1]) + String.valueOf(operandos[2]) + " = " + String.valueOf(resultado));
-					break;
-				case "-":
-					resultado = Double.parseDouble(operandos[0])-Double.parseDouble(operandos[2]);
-					setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(operandos[2])+" = "+ String.valueOf(resultado));
-					break;
-				case "*":
-					resultado = Double.parseDouble(operandos[0])*Double.parseDouble(operandos[2]);
-					setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(operandos[2])+" = "+ String.valueOf(resultado));
-					break;
-				case "/":					
-					if (!(Double.parseDouble(operandos[2]) == 0)) {
-						resultado = Double.parseDouble(operandos[0])/Double.parseDouble(operandos[2]);					
-						setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(operandos[2])+" = "+ String.valueOf(resultado));
-					}else{					
-						JFrame divisorCero = new JFrame();
-						JOptionPane.showMessageDialog(divisorCero, "El divisor debe ser " + "\ndistinto de cero");
-					}
-					break;
-				case "√":
-					JFrame noDisponible = new JFrame();
-					JOptionPane.showMessageDialog(noDisponible, "Funcionalidad no disponible");
-					break;
-				case "√³":
-					JFrame askPass = new JFrame();
-			        String pass = JOptionPane.showInputDialog(askPass, "Introduzca la contraseña");
-			        if (pass.equals("1234")) {
-			        	resultado = Math.cbrt(Double.parseDouble(operandos[0]));
-			        	setCuadro_resultado(String.valueOf(operandos[0])+String.valueOf(operandos[1])+String.valueOf(resultado));
-			        } else {
-			        JFrame error = new JFrame();
-			        JOptionPane.showMessageDialog(error, "Contraseña incorrecta");
-			        }
-					break;
-			}
-			resetEntrada();
 		}
 
 		public void resetEntrada() {
@@ -533,37 +341,137 @@ public class MainWindow extends JFrame{
 
 		}
 
-		public void suma(){
-			operandos[1] = "+";
-		}
+		public String listarResultados(ArrayList resultados) {
+			String resultados_string = "";
+			for (int i = 0; i < resultados.size(); i++) {
+				resultados_string = resultados_string + resultados.get(i);
 
-		public void resta(){
-			operandos[1] = "-";
-		}
-
-		public void dividir(){
-			operandos[1] = "/";
-		}
-
-		public void multiplicar(){
-			operandos[1] = "*";
-		}
-		
-		public void raizCuadrada() {
-			operandos[1] = "√";
-		}
-		
-		public void raizCubica() {
-			operandos[1] = "√³";
-		}
-
-		public String listarResultados(ArrayList resultados){
-				String resultados_string = "";
-				for (int i = 0; i < resultados.size(); i++) {
-					resultados_string = resultados_string + resultados.get(i);
-				}
-				return resultados_string;
 			}
+			return resultados_string;
+		}
+
+
+
+			public void campoActivo (String s){
+				if (operandos[1].equals("")) {
+					operandos[0] = operandos[0] + s;
+					hacerDecimalesCampo0();
+					ceroComa(s);
+					ponerSignoCampo0();
+				} else {
+					operandos[2] = operandos[2] + s;
+					hacerDecimalesCampo2();
+					ponerSignoCampo2();
+				}
+				setCuadro_entrada();
+			}
+
+
+			public void hacerDecimalesCampo0 () {
+				if (operandos[0].contains(".")) {
+					boton_coma.setEnabled(false);
+				} else {
+					boton_coma.setEnabled(true);
+				}
+			}
+
+			public void hacerDecimalesCampo2 () {
+				if (!operandos[2].contains(".")) {
+					boton_coma.setEnabled(true);
+				} else {
+					boton_coma.setEnabled(false);
+				}
+			}
+
+			public void ceroComa (String s){
+				if (operandos[0].equals("." + s)) {
+					operandos[0] = "0" + operandos[0];
+				}
+			}
+
+			public void ponerSignoCampo0 () {
+				if (operandos[0].contains("-")) {
+					boton_signo.setEnabled(false);
+				}
+			}
+
+			public void ponerSignoCampo2 () {
+				boton_signo.setEnabled(true);
+				if (operandos[2].contains("-")) {
+					boton_signo.setEnabled(false);
+				}
+			}
+
+
+			public void calcular () {
+
+				switch (operandos[1]) {
+
+					case "+":
+						double resultado = Double.parseDouble(operandos[0]) + Double.parseDouble(operandos[2]);
+						setCuadro_resultado(String.valueOf(operandos[0]) + String.valueOf(operandos[1]) + String.valueOf(operandos[2]) + " = " + String.valueOf(resultado));
+						break;
+					case "-":
+						resultado = Double.parseDouble(operandos[0]) - Double.parseDouble(operandos[2]);
+						setCuadro_resultado(String.valueOf(operandos[0]) + String.valueOf(operandos[1]) + String.valueOf(operandos[2]) + " = " + String.valueOf(resultado));
+						break;
+					case "*":
+						resultado = Double.parseDouble(operandos[0]) * Double.parseDouble(operandos[2]);
+						setCuadro_resultado(String.valueOf(operandos[0]) + String.valueOf(operandos[1]) + String.valueOf(operandos[2]) + " = " + String.valueOf(resultado));
+						break;
+					case "/":
+						if (!(Double.parseDouble(operandos[2]) == 0)) {
+							resultado = Double.parseDouble(operandos[0]) / Double.parseDouble(operandos[2]);
+							setCuadro_resultado(String.valueOf(operandos[0]) + String.valueOf(operandos[1]) + String.valueOf(operandos[2]) + " = " + String.valueOf(resultado));
+						} else {
+							JFrame divisorCero = new JFrame();
+							JOptionPane.showMessageDialog(divisorCero, "El divisor debe ser " + "\ndistinto de cero");
+						}
+						break;
+					case "√":
+						JFrame noDisponible = new JFrame();
+						JOptionPane.showMessageDialog(noDisponible, "Funcionalidad no disponible");
+						break;
+					case "√³":
+						JFrame askPass = new JFrame();
+						String pass = JOptionPane.showInputDialog(askPass, "Introduzca la contraseña");
+						if (pass.equals("1234")) {
+							resultado = Math.cbrt(Double.parseDouble(operandos[0]));
+							setCuadro_resultado(String.valueOf(operandos[0]) + String.valueOf(operandos[1]) + String.valueOf(resultado));
+						} else {
+							JFrame error = new JFrame();
+							JOptionPane.showMessageDialog(error, "Contraseña incorrecta");
+						}
+						break;
+				}
+				resetEntrada();
+			}
+
+			public void suma () {
+				operandos[1] = "+";
+			}
+
+			public void resta() {
+				operandos[1] = "-";
+			}
+
+			public void dividir() {
+				operandos[1] = "/";
+			}
+
+			public void multiplicar() {
+				operandos[1] = "*";
+			}
+
+			public void raizCuadrada() {
+				operandos[1] = "√";
+			}
+
+			public void raizCubica() {
+				operandos[1] = "√³";
+			}
+
+		}
 	}
 }
 
