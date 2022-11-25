@@ -334,6 +334,7 @@ public class MainWindow extends JFrame{
 				operandos[1] = "";
 				operandos[2] = "";
 				setCuadro_entrada();
+
 			}
 
 			public String listarResultados(ArrayList resultados) {
@@ -399,8 +400,7 @@ public class MainWindow extends JFrame{
 					}
 				}
 
-				public void ponerSignoCampo2 () {
-					boton_signo.setEnabled(true);
+				public void ponerSignoCampo2 () {					boton_signo.setEnabled(true);;
 					if (operandos[2].contains("-")) {
 						boton_signo.setEnabled(false);
 					}
