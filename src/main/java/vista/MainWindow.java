@@ -436,8 +436,9 @@ public class MainWindow extends JFrame {
 
 
 	public void calcular() {
-		double resultado = 0.0;
-		String ultimoNumero = operandos[2].substring(operandos[2].length() - 1);
+		try {
+			double resultado = 0.0;
+			String ultimoNumero = operandos[2].substring(operandos[2].length() - 1);
 			switch (operandos[1]) {
 				case "+":
 					if (verificarCaracterNumerico(ultimoNumero)) {
@@ -512,7 +513,10 @@ public class MainWindow extends JFrame {
 					resetEntrada();
 					cuadro_entrada.requestFocus();
 			}
+		} catch (StringIndexOutOfBoundsException e) {
+
 		}
+	}
 
 	public void suma() {
 		operandos[1] = "+";
