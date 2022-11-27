@@ -42,6 +42,7 @@ public class MainWindow extends JFrame {
 	private JButton boton_raizCubica;
 	private JTextField cuadro_entrada;
 	private JTextArea cuadro_resultado;
+	private JScrollPane scroll;
 	List<String> resultados = new ArrayList<>();
 	String[] operandos = { "", "", "" };
 
@@ -203,10 +204,10 @@ public class MainWindow extends JFrame {
 		cuadro_resultado.setFont(new Font("Arial", Font.BOLD, 24));
 		cuadro_resultado.setEditable(false);
 
-		JScrollPane scroll = new JScrollPane(cuadro_resultado);
-		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		add(scroll);
+		scroll = new JScrollPane(cuadro_resultado);
+		/*scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);*/
 		add(cuadro_resultado);
+		add(scroll);
 
 	}
 
@@ -502,26 +503,23 @@ public class MainWindow extends JFrame {
 					cuadro_entrada.requestFocus();
 					break;
 				case "√³":
-					try {
-						JFrame askPass = new JFrame();
-						String pass = JOptionPane.showInputDialog(askPass, "Introduzca la contraseña");
-						if (pass.equals("1234")) {
-							resultado = Math.cbrt(Double.parseDouble(operandos[2]));
-							setCuadro_resultado(operandos[1] + operandos[2] + "=" + resultado);
-						} else {
-							JFrame error = new JFrame();
-							JOptionPane.showMessageDialog(error, "Contraseña incorrecta");
-						}
-						resetEntrada();
-						cuadro_entrada.requestFocus();
-						break;
-					} catch (NullPointerException e) {
+					JFrame askPass = new JFrame();
+					String pass = JOptionPane.showInputDialog(askPass, "Introduzca la contraseña");
+					if (pass.equals("1234")) {
+						resultado = Math.cbrt(Double.parseDouble(operandos[2]));
+						setCuadro_resultado(operandos[1] + operandos[2] + "=" + resultado);
+					} else {
+						JFrame error = new JFrame();
+						JOptionPane.showMessageDialog(error, "Contraseña incorrecta");
+					}
+					resetEntrada();
+					cuadro_entrada.requestFocus();
+					break;
+			}
+
+					} catch (StringIndexOutOfBoundsException | NullPointerException | NumberFormatException e) {
 
 					}
-			}
-		} catch (StringIndexOutOfBoundsException e) {
-
-		}
 	}
 
 	public void suma() {
