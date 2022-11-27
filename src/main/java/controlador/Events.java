@@ -2,8 +2,12 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import vista.MainWindow;
+
+import static java.awt.event.KeyEvent.*;
 
 public class Events implements ActionListener {
 
@@ -19,57 +23,47 @@ public class Events implements ActionListener {
 
 		if (e.getSource() == ventana.getBoton_0()) {
 			ventana.campoActivo("0");
-			ventana.getBoton_0();
 		}
 
 		if (e.getSource() == ventana.getBoton_1()) {
 			ventana.campoActivo("1");
-			ventana.getBoton_1();
 		}
 
 		if (e.getSource() == ventana.getBoton_2()) {
 			ventana.campoActivo("2");
-			ventana.getBoton_2();
 
 		}
 
 		if (e.getSource() == ventana.getBoton_3()) {
 			ventana.campoActivo("3");
-			ventana.getBoton_3();
 
 		}
 
 		if (e.getSource() == ventana.getBoton_4()) {
 			ventana.campoActivo("4");
-			ventana.getBoton_4();
 
 		}
 
 		if (e.getSource() == ventana.getBoton_5()) {
 			ventana.campoActivo("5");
-			ventana.getBoton_5();
 
 		}
 
 		if (e.getSource() == ventana.getBoton_6()) {
 			ventana.campoActivo("6");
-			ventana.getBoton_6();
 
 		}
 
 		if (e.getSource() == ventana.getBoton_7()) {
 			ventana.campoActivo("7");
-			ventana.getBoton_7();
 		}
 
 		if (e.getSource() == ventana.getBoton_8()) {
 			ventana.campoActivo("8");
-			ventana.getBoton_8();
 		}
 
 		if (e.getSource() == ventana.getBoton_9()) {
 			ventana.campoActivo("9");
-			ventana.getBoton_9();
 		}
 
 		if (e.getSource() == ventana.getBoton_resultado()) {
@@ -96,7 +90,6 @@ public class Events implements ActionListener {
 		}
 		if (e.getSource() == ventana.getBoton_coma()) {
 			ventana.campoActivo(".");
-			ventana.getBoton_coma();
 		}
 		if (e.getSource() == ventana.getBoton_raizCubica()) {
 			ventana.raizCubica();
@@ -106,7 +99,6 @@ public class Events implements ActionListener {
 		}
 		if (e.getSource() == ventana.getBoton_signo()) {
 			ventana.campoActivo("-");
-			ventana.getBoton_signo();
 		}
 
 	}

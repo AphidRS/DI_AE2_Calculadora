@@ -2,6 +2,7 @@ package vista;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.KeyListener;
 import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
@@ -317,6 +318,7 @@ public class MainWindow extends JFrame {
 		boton_resultado.addActionListener(eventhandler);
 		boton_raizCuadrada.addActionListener(eventhandler);
 		boton_raizCubica.addActionListener(eventhandler);
+		cuadro_entrada.requestFocus();
 
 	}
 
@@ -432,109 +434,120 @@ public class MainWindow extends JFrame {
 				|| ultimoNumero.equals("9");
 	}
 
+
 	public void calcular() {
 		double resultado = 0.0;
 		String ultimoNumero = operandos[2].substring(operandos[2].length() - 1);
-		switch (operandos[1]) {
+			switch (operandos[1]) {
+				case "+":
+					if (verificarCaracterNumerico(ultimoNumero)) {
+						resultado = Double.parseDouble(operandos[0]) + Double.parseDouble(operandos[2]);
+						setCuadro_resultado(operandos[0] + operandos[1] + operandos[2] + " = " + resultado);
+					} else {
+						resultado = Double.parseDouble(operandos[0])
+								+ Double.parseDouble(operandos[2].substring(0, operandos[2].length() - 1));
+						setCuadro_resultado(operandos[0] + operandos[1] + operandos[2] + " = " + resultado);
+					}
+					break;
+				case "-":
+					if (verificarCaracterNumerico(ultimoNumero)) {
+						resultado = Double.parseDouble(operandos[0]) - Double.parseDouble(operandos[2]);
+						setCuadro_resultado(operandos[0] + operandos[1] + operandos[2] + " = " + resultado);
+					} else {
+						resultado = Double.parseDouble(operandos[0])
+								- Double.parseDouble(operandos[2].substring(0, operandos[2].length() - 1));
+						setCuadro_resultado(operandos[0] + operandos[1] + operandos[2] + " = " + resultado);
+					}
+					break;
+				case "*":
+					if (verificarCaracterNumerico(ultimoNumero)) {
+						resultado = Double.parseDouble(operandos[0]) * Double.parseDouble(operandos[2]);
+						setCuadro_resultado(operandos[0] + operandos[1] + operandos[2] + " = " + resultado);
+					} else {
+						resultado = Double.parseDouble(operandos[0])
+								* Double.parseDouble(operandos[2].substring(0, operandos[2].length() - 1));
+						setCuadro_resultado(operandos[0] + operandos[1] + operandos[2] + " = " + resultado);
+					}
+					break;
+				case "/":
+					if (verificarCaracterNumerico(ultimoNumero)) {
+						if (!(Double.parseDouble(operandos[2]) == 0)) {
+							resultado = Double.parseDouble(operandos[0]) / Double.parseDouble(operandos[2]);
+							setCuadro_resultado(operandos[0] + operandos[1] + operandos[2] + " = " + resultado);
+						} else {
+							JFrame divisorCero = new JFrame();
+							JOptionPane.showMessageDialog(divisorCero, "El divisor debe ser " + "\ndistinto de cero");
+						}
+					} else {
+						if (!(Double.parseDouble(operandos[2]) == 0)) {
+							resultado = Double.parseDouble(operandos[0])
+									/ Double.parseDouble(operandos[2].substring(0, operandos[2].length() - 1));
+							setCuadro_resultado(operandos[0] + operandos[1] + operandos[2] + " = " + resultado);
+						} else {
+							JFrame divisorCero = new JFrame();
+							JOptionPane.showMessageDialog(divisorCero, "El divisor debe ser " + "\ndistinto de cero");
+						}
 
-		case "+":
-			if (verificarCaracterNumerico(ultimoNumero)) {
-				resultado = Double.parseDouble(operandos[0]) + Double.parseDouble(operandos[2]);
-				setCuadro_resultado(operandos[0] + operandos[1] + operandos[2] + " = " + resultado);
-			} else {
-				resultado = Double.parseDouble(operandos[0])
-						+ Double.parseDouble(operandos[2].substring(0, operandos[2].length() - 1));
-				setCuadro_resultado(operandos[0] + operandos[1] + operandos[2] + " = " + resultado);
-			}
-			break;
-		case "-":
-			if (verificarCaracterNumerico(ultimoNumero)) {
-				resultado = Double.parseDouble(operandos[0]) - Double.parseDouble(operandos[2]);
-				setCuadro_resultado(operandos[0] + operandos[1] + operandos[2] + " = " + resultado);
-			} else {
-				resultado = Double.parseDouble(operandos[0])
-						- Double.parseDouble(operandos[2].substring(0, operandos[2].length() - 1));
-				setCuadro_resultado(operandos[0] + operandos[1] + operandos[2] + " = " + resultado);
-			}
-			break;
-		case "*":
-			if (verificarCaracterNumerico(ultimoNumero)) {
-				resultado = Double.parseDouble(operandos[0]) * Double.parseDouble(operandos[2]);
-				setCuadro_resultado(operandos[0] + operandos[1] + operandos[2] + " = " + resultado);
-			} else {
-				resultado = Double.parseDouble(operandos[0])
-						* Double.parseDouble(operandos[2].substring(0, operandos[2].length() - 1));
-				setCuadro_resultado(operandos[0] + operandos[1] + operandos[2] + " = " + resultado);
-			}
-			break;
-		case "/":
-			if (verificarCaracterNumerico(ultimoNumero)) {
-				if (!(Double.parseDouble(operandos[2]) == 0)) {
-					resultado = Double.parseDouble(operandos[0]) / Double.parseDouble(operandos[2]);
-					setCuadro_resultado(operandos[0] + operandos[1] + operandos[2] + " = " + resultado);
-				} else {
-					JFrame divisorCero = new JFrame();
-					JOptionPane.showMessageDialog(divisorCero, "El divisor debe ser " + "\ndistinto de cero");
-				}
-			} else {
-				if (!(Double.parseDouble(operandos[2]) == 0)) {
-					resultado = Double.parseDouble(operandos[0])
-							/ Double.parseDouble(operandos[2].substring(0, operandos[2].length() - 1));
-					setCuadro_resultado(operandos[0] + operandos[1] + operandos[2] + " = " + resultado);
-				} else {
-					JFrame divisorCero = new JFrame();
-					JOptionPane.showMessageDialog(divisorCero, "El divisor debe ser " + "\ndistinto de cero");
-				}
+					}
+					break;
+				case "√":
+					JFrame noDisponible = new JFrame();
+					JOptionPane.showMessageDialog(noDisponible, "Funcionalidad no disponible");
+					break;
+				case "√³":
+					try {
+						JFrame askPass = new JFrame();
+						String pass = JOptionPane.showInputDialog(askPass, "Introduzca la contraseña");
+						if (pass.equals("1234")) {
+							resultado = Math.cbrt(Double.parseDouble(operandos[2]));
+							setCuadro_resultado(operandos[1] + operandos[2] + "=" + resultado);
+						} else {
+							JFrame error = new JFrame();
+							JOptionPane.showMessageDialog(error, "Contraseña incorrecta");
+						}
+						break;
+					} catch (NullPointerException e) {
 
+					}
+					resetEntrada();
+					cuadro_entrada.requestFocus();
 			}
-			break;
-		case "√":
-			JFrame noDisponible = new JFrame();
-			JOptionPane.showMessageDialog(noDisponible, "Funcionalidad no disponible");
-			break;
-		case "√³":
-			JFrame askPass = new JFrame();
-			String pass = JOptionPane.showInputDialog(askPass, "Introduzca la contraseña");
-			if (pass.equals("1234")) {
-				resultado = Math.cbrt(Double.parseDouble(operandos[2]));
-				setCuadro_resultado(operandos[1] + operandos[2] + "=" + resultado);
-			} else {
-				JFrame error = new JFrame();
-				JOptionPane.showMessageDialog(error, "Contraseña incorrecta");
-			}
-			break;
 		}
-		resetEntrada();
-	}
 
 	public void suma() {
 		operandos[1] = "+";
 		boton_signo.setEnabled(true);
+		setCuadro_entrada();
 	}
 
 	public void resta() {
 		operandos[1] = "-";
 		boton_signo.setEnabled(true);
+		setCuadro_entrada();
 	}
 
 	public void dividir() {
 		operandos[1] = "/";
 		boton_signo.setEnabled(true);
+		setCuadro_entrada();
 	}
 
 	public void multiplicar() {
 		operandos[1] = "*";
 		boton_signo.setEnabled(true);
+		setCuadro_entrada();
 	}
 
 	public void raizCuadrada() {
 		operandos[1] = "√";
 		boton_signo.setEnabled(true);
+		setCuadro_entrada();
 	}
 
 	public void raizCubica() {
 		operandos[1] = "√³";
 		boton_signo.setEnabled(false);
+		setCuadro_entrada();
 	}
 
 }
