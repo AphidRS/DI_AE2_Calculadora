@@ -53,8 +53,7 @@ public class MainWindow extends JFrame {
 		setResizable(false);
 		setTitle("Calculadora");
 		setLayout(null);
-		setFont(new Font("Arial", Font.PLAIN, 75));
-		setBackground(Color.DARK_GRAY);
+		setFont(new Font("Consolas", Font.PLAIN, 75));
 		inicializarComponentes();
 		setVisible(true);
 
@@ -164,7 +163,7 @@ public class MainWindow extends JFrame {
 		boton_reset = new JButton("CE");
 		boton_reset.setBounds(280, 270, 60, 50);
 		boton_reset.setFont(new Font("Arial", Font.BOLD, 18));
-		boton_reset.setBackground(new Color(255,75,75));
+		boton_reset.setBackground(new Color(255,75,100));
 		add(boton_reset);
 
 		boton_signo = new JButton("+/-");
@@ -176,19 +175,19 @@ public class MainWindow extends JFrame {
 		boton_resultado = new JButton("=");
 		boton_resultado.setBounds(280, 380, 60, 160);
 		boton_resultado.setFont(new Font("Arial", Font.BOLD, 20));
-		boton_resultado.setBackground(new Color(245, 125, 75));
+		boton_resultado.setBackground(new Color(14, 227, 100));
 		add(boton_resultado);
 
 		boton_raizCuadrada = new JButton("√");
 		boton_raizCuadrada.setBounds(20, 490, 125, 50);
 		boton_raizCuadrada.setFont(new Font("Arial", Font.BOLD, 20));
-		boton_raizCuadrada.setBackground(new Color(132, 110, 97));
+		boton_raizCuadrada.setBackground(new Color(205, 205, 205));
 		add(boton_raizCuadrada);
 
 		boton_raizCubica = new JButton("√³");
 		boton_raizCubica.setBounds(150, 490, 125, 50);
 		boton_raizCubica.setFont(new Font("Arial", Font.BOLD, 20));
-		boton_raizCubica.setBackground(new Color(132, 110, 97));
+		boton_raizCubica.setBackground(new Color(205, 205, 205));
 		add(boton_raizCubica);
 
 		cuadro_entrada = new JTextField();
