@@ -2,7 +2,6 @@ package vista;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.KeyListener;
 import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
@@ -255,10 +254,6 @@ public class MainWindow extends JFrame {
 		return boton_coma;
 	}
 
-	public JButton getBoton_porcentaje() {
-		return boton_porcentaje;
-	}
-
 	public JButton getBoton_mas() {
 		return boton_mas;
 	}
@@ -319,6 +314,7 @@ public class MainWindow extends JFrame {
 		boton_raizCuadrada.addActionListener(eventhandler);
 		boton_raizCubica.addActionListener(eventhandler);
 		cuadro_entrada.requestFocus();
+		cuadro_entrada.setText("");
 
 	}
 
@@ -340,7 +336,7 @@ public class MainWindow extends JFrame {
 	}
 
 	public void resetEntrada() {
-		operandos[0] = "0";
+		operandos[0] = "";
 		operandos[1] = "";
 		operandos[2] = "";
 		setCuadro_entrada();
@@ -449,6 +445,8 @@ public class MainWindow extends JFrame {
 								+ Double.parseDouble(operandos[2].substring(0, operandos[2].length() - 1));
 						setCuadro_resultado(operandos[0] + operandos[1] + operandos[2] + " = " + resultado);
 					}
+					resetEntrada();
+					cuadro_entrada.requestFocus();
 					break;
 				case "-":
 					if (verificarCaracterNumerico(ultimoNumero)) {
@@ -459,6 +457,8 @@ public class MainWindow extends JFrame {
 								- Double.parseDouble(operandos[2].substring(0, operandos[2].length() - 1));
 						setCuadro_resultado(operandos[0] + operandos[1] + operandos[2] + " = " + resultado);
 					}
+					resetEntrada();
+					cuadro_entrada.requestFocus();
 					break;
 				case "*":
 					if (verificarCaracterNumerico(ultimoNumero)) {
@@ -469,6 +469,8 @@ public class MainWindow extends JFrame {
 								* Double.parseDouble(operandos[2].substring(0, operandos[2].length() - 1));
 						setCuadro_resultado(operandos[0] + operandos[1] + operandos[2] + " = " + resultado);
 					}
+					resetEntrada();
+					cuadro_entrada.requestFocus();
 					break;
 				case "/":
 					if (verificarCaracterNumerico(ultimoNumero)) {
@@ -490,10 +492,14 @@ public class MainWindow extends JFrame {
 						}
 
 					}
+					resetEntrada();
+					cuadro_entrada.requestFocus();
 					break;
 				case "√":
 					JFrame noDisponible = new JFrame();
 					JOptionPane.showMessageDialog(noDisponible, "Funcionalidad no disponible");
+					resetEntrada();
+					cuadro_entrada.requestFocus();
 					break;
 				case "√³":
 					try {
@@ -506,12 +512,12 @@ public class MainWindow extends JFrame {
 							JFrame error = new JFrame();
 							JOptionPane.showMessageDialog(error, "Contraseña incorrecta");
 						}
+						resetEntrada();
+						cuadro_entrada.requestFocus();
 						break;
 					} catch (NullPointerException e) {
 
 					}
-					resetEntrada();
-					cuadro_entrada.requestFocus();
 			}
 		} catch (StringIndexOutOfBoundsException e) {
 
