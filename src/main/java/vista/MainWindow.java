@@ -1,7 +1,6 @@
 package vista;
 
-import java.awt.Color;
-import java.awt.Font;
+import java.awt.*;
 import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
@@ -126,38 +125,38 @@ public class MainWindow extends JFrame {
 		boton_coma = new JButton(",");
 		boton_coma.setBounds(85, 435, 60, 50);
 		boton_coma.setFont(new Font("Arial", Font.BOLD, 20));
-		boton_coma.setBackground(Color.lightGray);
+		boton_coma.setBackground(new Color(205, 205, 205));
 		add(boton_coma);
 
 		boton_porcentaje = new JButton("%");
 		boton_porcentaje.setBounds(150, 435, 60, 50);
 		boton_porcentaje.setFont(new Font("Arial", Font.BOLD, 20));
-		boton_porcentaje.setBackground(Color.lightGray);
+		boton_porcentaje.setBackground(new Color(205, 205, 205));
 		add(boton_porcentaje);
 
 		//
 		boton_dividir = new JButton("/");
 		boton_dividir.setBounds(215, 270, 60, 50);
 		boton_dividir.setFont(new Font("Arial", Font.BOLD, 20));
-		boton_dividir.setBackground(Color.lightGray);
+		boton_dividir.setBackground(new Color(245, 125, 75));
 		add(boton_dividir);
 
 		boton_multiplicar = new JButton("*");
 		boton_multiplicar.setBounds(215, 325, 60, 50);
 		boton_multiplicar.setFont(new Font("Arial", Font.BOLD, 20));
-		boton_multiplicar.setBackground(Color.lightGray);
+		boton_multiplicar.setBackground(new Color(245, 125, 75));
 		add(boton_multiplicar);
 
 		boton_menos = new JButton("-");
 		boton_menos.setBounds(215, 380, 60, 50);
 		boton_menos.setFont(new Font("Arial", Font.BOLD, 20));
-		boton_menos.setBackground(Color.lightGray);
+		boton_menos.setBackground(new Color(245, 125, 75));
 		add(boton_menos);
 
 		boton_mas = new JButton("+");
 		boton_mas.setBounds(215, 435, 60, 50);
 		boton_mas.setFont(new Font("Arial", Font.BOLD, 20));
-		boton_mas.setBackground(Color.lightGray);
+		boton_mas.setBackground(new Color(245, 125, 75));
 		add(boton_mas);
 
 		//
@@ -165,31 +164,31 @@ public class MainWindow extends JFrame {
 		boton_reset = new JButton("CE");
 		boton_reset.setBounds(280, 270, 60, 50);
 		boton_reset.setFont(new Font("Arial", Font.BOLD, 18));
-		boton_reset.setBackground(Color.lightGray);
+		boton_reset.setBackground(new Color(255,75,75));
 		add(boton_reset);
 
 		boton_signo = new JButton("+/-");
 		boton_signo.setBounds(280, 325, 60, 50);
 		boton_signo.setFont(new Font("Arial", Font.BOLD, 20));
-		boton_signo.setBackground(Color.lightGray);
+		boton_signo.setBackground(new Color(245, 125, 75));
 		add(boton_signo);
 
 		boton_resultado = new JButton("=");
 		boton_resultado.setBounds(280, 380, 60, 160);
 		boton_resultado.setFont(new Font("Arial", Font.BOLD, 20));
-		boton_resultado.setBackground(Color.lightGray);
+		boton_resultado.setBackground(new Color(245, 125, 75));
 		add(boton_resultado);
 
 		boton_raizCuadrada = new JButton("√");
 		boton_raizCuadrada.setBounds(20, 490, 125, 50);
 		boton_raizCuadrada.setFont(new Font("Arial", Font.BOLD, 20));
-		boton_raizCuadrada.setBackground(Color.lightGray);
+		boton_raizCuadrada.setBackground(new Color(132, 110, 97));
 		add(boton_raizCuadrada);
 
 		boton_raizCubica = new JButton("√³");
 		boton_raizCubica.setBounds(150, 490, 125, 50);
 		boton_raizCubica.setFont(new Font("Arial", Font.BOLD, 20));
-		boton_raizCubica.setBackground(Color.lightGray);
+		boton_raizCubica.setBackground(new Color(132, 110, 97));
 		add(boton_raizCubica);
 
 		cuadro_entrada = new JTextField();
@@ -205,9 +204,13 @@ public class MainWindow extends JFrame {
 		cuadro_resultado.setEditable(false);
 
 		scroll = new JScrollPane(cuadro_resultado);
-		/*scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);*/
+		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		add(cuadro_resultado);
 		add(scroll);
+
+		Color background = new Color(75,75,75);
+		Container main = getContentPane();
+		main.setBackground(background);
 
 	}
 
