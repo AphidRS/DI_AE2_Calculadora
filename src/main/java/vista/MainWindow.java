@@ -2,6 +2,7 @@ package vista;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,11 +13,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
-
 import controlador.Events;
 
 public class MainWindow extends JFrame {
 
+	@Serial
 	private static final long serialVersionUID = 1L;
 	private JButton boton_1;
 	private JButton boton_2;
@@ -47,7 +48,7 @@ public class MainWindow extends JFrame {
 	public MainWindow() {
 
 		setLocationRelativeTo(null);
-		setBounds(450, 300, 360, 570);
+		setBounds(450, 300, 360, 600);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
 		setTitle("Calculadora");
@@ -408,15 +409,7 @@ public class MainWindow extends JFrame {
 		}
 	}
 
-	/*
-	 * public void ponerSigno(){ if (operandos[0] == "") {
-	 * 
-	 * 
-	 * }
-	 * 
-	 * 
-	 * }
-	 */
+
 	public void ponerSignoCampo0() {
 		if (operandos[0].contains("-")) {
 			boton_signo.setEnabled(false);
